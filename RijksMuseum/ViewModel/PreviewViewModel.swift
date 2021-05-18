@@ -52,11 +52,15 @@ final class PreviewViewModelImpl: PreviewViewModel {
             self.isFetching = false
             switch response {
             case .failure(let error):
-                self.delegate?.failureFetching(with: error.errorDerscription)
+                DispatchQueue.main.async {
+                    self.delegate?.failureFetching(with: error.errorDerscription)
+                }
             case .success(let items):
                 self.fillDataFromModel(with: items) {
                     self.currentPage += 1
-                    self.delegate?.successFetching(with: self.artObjects.value)
+                    DispatchQueue.main.async {
+                        self.delegate?.successFetching(with: self.artObjects.value)
+                    }
                 }
             }
         }
