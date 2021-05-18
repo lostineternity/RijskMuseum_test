@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A24817E2653B3A5005A0008 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A24817D2653B3A5005A0008 /* Settings.swift */; };
 		1A8FA4F8264D81900022F844 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8FA4F7264D81900022F844 /* UIViewController+Extensions.swift */; };
 		1AB8609B264EF96B00E34ED9 /* PreviewViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB8609A264EF96B00E34ED9 /* PreviewViewModelTest.swift */; };
 		1AB8609D264F06AF00E34ED9 /* DetailViewModelTestSuccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB8609C264F06AF00E34ED9 /* DetailViewModelTestSuccess.swift */; };
@@ -14,7 +15,6 @@
 		1AB860A0264F1B0B00E34ED9 /* mockSuccessItem.json in Resources */ = {isa = PBXBuildFile; fileRef = 1AB8609E264F0DD200E34ED9 /* mockSuccessItem.json */; };
 		1AD3179026468FB8009EC28E /* PreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD3178F26468FB8009EC28E /* PreviewViewModel.swift */; };
 		1AD317932646973F009EC28E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1AD715AE2645450D008A57FE /* Assets.xcassets */; };
-		1AD317962646984C009EC28E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD317952646984C009EC28E /* Constants.swift */; };
 		1AD715A62645450B008A57FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD715A52645450B008A57FE /* AppDelegate.swift */; };
 		1AD715A82645450B008A57FE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD715A72645450B008A57FE /* SceneDelegate.swift */; };
 		1AD715AA2645450B008A57FE /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD715A92645450B008A57FE /* PreviewViewController.swift */; };
@@ -58,12 +58,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A24817D2653B3A5005A0008 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		1A8FA4F7264D81900022F844 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		1AB8609A264EF96B00E34ED9 /* PreviewViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewModelTest.swift; sourceTree = "<group>"; };
 		1AB8609C264F06AF00E34ED9 /* DetailViewModelTestSuccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModelTestSuccess.swift; sourceTree = "<group>"; };
 		1AB8609E264F0DD200E34ED9 /* mockSuccessItem.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mockSuccessItem.json; sourceTree = "<group>"; };
 		1AD3178F26468FB8009EC28E /* PreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewModel.swift; sourceTree = "<group>"; };
-		1AD317952646984C009EC28E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		1AD715A22645450B008A57FE /* RijksMuseum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RijksMuseum.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AD715A52645450B008A57FE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1AD715A72645450B008A57FE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -188,9 +188,9 @@
 			children = (
 				1AD715A72645450B008A57FE /* SceneDelegate.swift */,
 				1AD715A52645450B008A57FE /* AppDelegate.swift */,
-				1AD317952646984C009EC28E /* Constants.swift */,
 				1AD715B32645450D008A57FE /* Info.plist */,
 				1AD715AE2645450D008A57FE /* Assets.xcassets */,
+				1A24817D2653B3A5005A0008 /* Settings.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -373,11 +373,11 @@
 				1ADA2BAD264840F1002BF9D7 /* UICollectionViewCell+Extension.swift in Sources */,
 				1ADA2B8026481D6E002BF9D7 /* ActivityIndicatorPresenter.swift in Sources */,
 				1ADA2B9526482E0B002BF9D7 /* DetailItem.swift in Sources */,
-				1AD317962646984C009EC28E /* Constants.swift in Sources */,
 				1ADA2B99264834C7002BF9D7 /* DetailNetworkRequest.swift in Sources */,
 				1ADA2B8526482944002BF9D7 /* Router.swift in Sources */,
 				1AD715D726454700008A57FE /* PreviewCollectionItemCell.swift in Sources */,
 				1ADA2B5A2646D1AD002BF9D7 /* NetworkError.swift in Sources */,
+				1A24817E2653B3A5005A0008 /* Settings.swift in Sources */,
 				1ADA2B5C2646D34A002BF9D7 /* RequestService.swift in Sources */,
 				1ADA2BA526483FC3002BF9D7 /* DetailItemHeaderCollectionViewCell.swift in Sources */,
 				1ADA2B6E2646E065002BF9D7 /* PreviewNetworkRequest.swift in Sources */,
