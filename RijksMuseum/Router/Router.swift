@@ -11,5 +11,4 @@ import UIKit
 protocol Router {
     var context: UIViewController { get set}
     func push(to vc: UIViewController)
-    func present(with vc: UIViewController)
 }

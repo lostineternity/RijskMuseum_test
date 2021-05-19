@@ -30,25 +30,27 @@ class DetailViewController: UIViewController, ActivityIndicatorPresenter {
     }
     
     var activityIndicator = UIActivityIndicatorView()
-    
+   
     fileprivate var imageView: UIImageView = {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.contentMode = .scaleAspectFit
-        return $0
-    }(UIImageView())
-    
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+
     private var collectionView: UICollectionView = {
-        $0.backgroundColor = .darkGray
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.scrollIndicatorInsets = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
-        $0.register(DetailItemHeaderCollectionViewCell.self,
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        collectionView.backgroundColor = .darkGray
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
+        collectionView.register(DetailItemHeaderCollectionViewCell.self,
                     forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                     withReuseIdentifier: DetailItemHeaderCollectionViewCell.identifier)
-        $0.register(DetailItemCollectionViewCell.self,
+        collectionView.register(DetailItemCollectionViewCell.self,
                     forCellWithReuseIdentifier: DetailItemCollectionViewCell.identifier)
-        return $0
-    }(UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()))
-    
+        return collectionView
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()

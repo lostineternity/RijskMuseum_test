@@ -42,7 +42,6 @@
 		1ADA2BA526483FC3002BF9D7 /* DetailItemHeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADA2BA426483FC3002BF9D7 /* DetailItemHeaderCollectionViewCell.swift */; };
 		1ADA2BA9264840CC002BF9D7 /* DetailItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADA2BA8264840CC002BF9D7 /* DetailItemCollectionViewCell.swift */; };
 		1ADA2BAD264840F1002BF9D7 /* UICollectionViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADA2BAC264840F1002BF9D7 /* UICollectionViewCell+Extension.swift */; };
-		1ADA2BB126485E84002BF9D7 /* SafeDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADA2BB026485E84002BF9D7 /* SafeDecodable.swift */; };
 		1ADA2BB92649CC3C002BF9D7 /* ThreadSafeArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADA2BB82649CC3C002BF9D7 /* ThreadSafeArray.swift */; };
 		1ADD7AAF2651AB09009C93C9 /* DetailViewModelTestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADD7AAE2651AA4B009C93C9 /* DetailViewModelTestError.swift */; };
 /* End PBXBuildFile section */
@@ -95,7 +94,6 @@
 		1ADA2BA426483FC3002BF9D7 /* DetailItemHeaderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailItemHeaderCollectionViewCell.swift; sourceTree = "<group>"; };
 		1ADA2BA8264840CC002BF9D7 /* DetailItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		1ADA2BAC264840F1002BF9D7 /* UICollectionViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extension.swift"; sourceTree = "<group>"; };
-		1ADA2BB026485E84002BF9D7 /* SafeDecodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafeDecodable.swift; sourceTree = "<group>"; };
 		1ADA2BB82649CC3C002BF9D7 /* ThreadSafeArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadSafeArray.swift; sourceTree = "<group>"; };
 		1ADD7AAE2651AA4B009C93C9 /* DetailViewModelTestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModelTestError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -233,7 +231,6 @@
 		1ADA2B7A26471653002BF9D7 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				1ADA2BB026485E84002BF9D7 /* SafeDecodable.swift */,
 				1ADA2BB82649CC3C002BF9D7 /* ThreadSafeArray.swift */,
 				1ADA2B7F26481D6E002BF9D7 /* ActivityIndicatorPresenter.swift */,
 				1ADA2BA026483E11002BF9D7 /* UIView+Extension.swift */,
@@ -365,7 +362,6 @@
 				1ADA2B682646D79C002BF9D7 /* RequestServiceImpl.swift in Sources */,
 				1ADA2B9126482DDD002BF9D7 /* DetailViewController.swift in Sources */,
 				1ADA2B8D26482B9A002BF9D7 /* DetailViewModel.swift in Sources */,
-				1ADA2BB126485E84002BF9D7 /* SafeDecodable.swift in Sources */,
 				1ADA2BA126483E11002BF9D7 /* UIView+Extension.swift in Sources */,
 				1AD715A62645450B008A57FE /* AppDelegate.swift in Sources */,
 				1ADA2BA9264840CC002BF9D7 /* DetailItemCollectionViewCell.swift in Sources */,

@@ -13,16 +13,14 @@ extension UIViewController {
     public typealias AlertCompletionHandler = (()->())?
     public func showErrorAlert(with title: String = "Attention!",
                                message: String,
-                               prefferedStyle: UIAlertController.Style = .alert,
-                               actionHandler: AlertCompletionHandler = nil,
-                               closeAlertHandler: AlertCompletionHandler = nil) {
+                               actionHandler: AlertCompletionHandler = nil) {
         let errorAlert = UIAlertController(title: title,
                                            message: message,
                                            preferredStyle: .alert)
         errorAlert.addAction(UIAlertAction(title: "Ok",
                                            style: .default,
                                            handler: { _ in actionHandler?()}))
-        self.present(errorAlert, animated: true, completion: closeAlertHandler)
+        self.present(errorAlert, animated: true, completion: nil)
     }
     
 }

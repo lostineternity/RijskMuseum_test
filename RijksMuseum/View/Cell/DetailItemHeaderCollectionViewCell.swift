@@ -9,15 +9,16 @@ import UIKit
 
 class DetailItemHeaderCollectionViewCell: UICollectionViewCell {
     fileprivate let title: UILabel = {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.lineBreakMode = .byWordWrapping
-        $0.font = UIFont.boldSystemFont(ofSize: 24)
-        $0.textColor = .white
-        $0.shadowColor = .black
-        $0.shadowOffset = CGSize(width: -1, height: 1)
-        $0.numberOfLines = 0
-        return $0
-    }(UILabel())
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.lineBreakMode = .byWordWrapping
+        label.font = UIFont.boldSystemFont(ofSize: 24)
+        label.textColor = .white
+        label.shadowColor = .black
+        label.shadowOffset = CGSize(width: -1, height: 1)
+        label.numberOfLines = 0
+        return label
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)

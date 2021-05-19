@@ -30,16 +30,16 @@ class PreviewCollectionViewController: UIViewController, ActivityIndicatorPresen
     private var collectionItems: [ArtObjectPreview] = []
     
     private var collectionView: UICollectionView = {
-        $0.backgroundColor = .darkGray
-        $0.refreshControl = UIRefreshControl()
-        $0.refreshControl?.tintColor = .white
-        $0.refreshControl?.center = $0.center
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.scrollIndicatorInsets = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
-        $0.register(PreviewCollectionItemCell.self,
-                    forCellWithReuseIdentifier: PreviewCollectionItemCell.identifier)
-        return $0
-    }(UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()))
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        collectionView.backgroundColor = .darkGray
+        collectionView.refreshControl = UIRefreshControl()
+        collectionView.refreshControl?.tintColor = .white
+        collectionView.refreshControl?.center = collectionView.center
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
+        collectionView.register(PreviewCollectionItemCell.self, forCellWithReuseIdentifier: PreviewCollectionItemCell.identifier)
+        return collectionView
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()

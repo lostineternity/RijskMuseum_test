@@ -9,32 +9,35 @@ import UIKit
 
 class DetailItemCollectionViewCell: UICollectionViewCell {
     fileprivate let title: UILabel = {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.lineBreakMode = .byWordWrapping
-        $0.font = UIFont.boldSystemFont(ofSize: 18)
-        $0.textColor = .lightGray
-        $0.shadowColor = .black
-        $0.shadowOffset = CGSize(width: -1, height: 1)
-        $0.numberOfLines = 0
-        return $0
-    }(UILabel())
-    
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.lineBreakMode = .byWordWrapping
+        label.font = UIFont.boldSystemFont(ofSize: 18)
+        label.textColor = .lightGray
+        label.shadowColor = .black
+        label.shadowOffset = CGSize(width: -1, height: 1)
+        label.numberOfLines = 0
+        return label
+    }()
+ 
     fileprivate let info: UILabel = {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.lineBreakMode = .byWordWrapping
-        $0.font = UIFont.systemFont(ofSize: 18)
-        $0.textColor = .lightText
-        $0.numberOfLines = 0
-        return $0
-    }(UILabel())
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.lineBreakMode = .byWordWrapping
+        label.font = UIFont.systemFont(ofSize: 18)
+        label.textColor = .lightText
+        label.numberOfLines = 0
+        return label
+    }()
     
     fileprivate var stackView: UIStackView = {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.axis = .vertical
-        $0.alignment = .leading
-        $0.distribution = .fill
-        return $0
-    }(UIStackView())
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.alignment = .leading
+        stackView.distribution = .fill
+        return stackView
+    }()
     
     private var estimatedWidth: CGFloat!
     
