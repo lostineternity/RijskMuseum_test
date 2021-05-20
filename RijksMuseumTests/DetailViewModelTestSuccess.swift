@@ -8,16 +8,14 @@
 import XCTest
 @testable import RijksMuseum
 
-class DetailViewModelTestSuccess: XCTestCase, DetailViewModelDelegate{
+class DetailViewModelTestSuccess: XCTestCase {
     private var modelUnderTest: DetailViewModelImpl!
-    private var promise: XCTestExpectation!
-    
+
     override func setUpWithError() throws {
         try super.setUpWithError()
         let testItemId = "SK-A-4100"
         modelUnderTest = DetailViewModelImpl(with: testItemId,
                                              networkService: fakeDetailNetworkService())
-        modelUnderTest.delegate = self
     }
 
     override func tearDownWithError() throws {
@@ -26,11 +24,22 @@ class DetailViewModelTestSuccess: XCTestCase, DetailViewModelDelegate{
     }
 
     func testSuccessCase() throws {
-        promise = expectation(description: "Fetched and translated item data to model")
-        modelUnderTest.fetchData()
-        wait(for: [promise], timeout: 10)
+        configureTestEnviromentSuccessCase()
     }
+    
+    private func configureTestEnviromentSuccessCase() {
+        let fakeViewModelDelegate = fakeViewModelDelegateImplSuccessCase()
+        fakeViewModelDelegate.promise = expectation(description: "Fetched and decoded item data into model")
+        modelUnderTest.delegate = fakeViewModelDelegate
+        modelUnderTest.fetchData()
+        wait(for: [fakeViewModelDelegate.promise], timeout: 10)
+    }
+}
 
+fileprivate class fakeViewModelDelegateImplSuccessCase: DetailViewModelDelegate {
+    
+    var promise: XCTestExpectation!
+ 
     func fetchingProcessing() {}
     
     func successFetching(with item: DetailItem) {
@@ -63,9 +72,8 @@ class DetailViewModelTestSuccess: XCTestCase, DetailViewModelDelegate{
     }
     
     func failureFetching(with errorDescription: String) {
-        XCTFail("Error while fetching data occured")
+        XCTFail("Error fetching data")
     }
-
 }
 
 fileprivate struct fakeDetailNetworkService: DetailNetworkService {

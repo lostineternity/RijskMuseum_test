@@ -8,17 +8,14 @@
 import XCTest
 @testable import RijksMuseum
 
-class PreviewViewModelTest: XCTestCase, PreviewViewModelDelegate {
+class PreviewViewModelTest: XCTestCase {
     private var modelUnderTest: PreviewViewModelImpl!
-    private var promise: XCTestExpectation!
-    private var pageNumber: Int!
-    
+
     override func setUpWithError() throws {
         try super.setUpWithError()
         let collectionNetworkService = PreviewNetworkServiceImpl(requestService: RequestServiceImpl())
         modelUnderTest = PreviewViewModelImpl(with: collectionNetworkService,
                                                  router: PreviewRouterImpl(context: UIViewController()))
-        modelUnderTest.delegate = self
     }
 
     override func tearDownWithError() throws {
@@ -27,12 +24,25 @@ class PreviewViewModelTest: XCTestCase, PreviewViewModelDelegate {
     }
 
     func testPreviewViewModel() throws {
-        promise = expectation(description: "Fetched and translated collection data to model items")
-        pageNumber = modelUnderTest.currentPage
-        modelUnderTest.fetchData(page: nil)
-        wait(for: [promise], timeout: 10)
+        configureTestEnviromentSuccessCase()
     }
 
+    private func configureTestEnviromentSuccessCase() {
+        let fakeViewModelDelegate = fakeViewModelDelegateImplSuccessCase()
+        fakeViewModelDelegate.modelUnderTest = modelUnderTest
+        fakeViewModelDelegate.promise = expectation(description: "Fetched and decoded collection data into model items")
+        fakeViewModelDelegate.pageNumber = modelUnderTest.currentPage
+        modelUnderTest.delegate = fakeViewModelDelegate
+        modelUnderTest.fetchData(page: nil)
+        wait(for: [fakeViewModelDelegate.promise], timeout: 10)
+    }
+}
+
+fileprivate class fakeViewModelDelegateImplSuccessCase: PreviewViewModelDelegate {
+    var modelUnderTest: PreviewViewModelImpl!
+    var promise: XCTestExpectation!
+    var pageNumber: Int!
+    
     func fetchingProcessing() {
         XCTAssertEqual(modelUnderTest.isFetching, true, "Error fetching status")
     }
@@ -46,8 +56,7 @@ class PreviewViewModelTest: XCTestCase, PreviewViewModelDelegate {
     }
     
     func failureFetching(with errorDescription: String) {
-        XCTFail("Error while fetching data occured")
+        XCTFail("Error fetching data")
         XCTAssertEqual(modelUnderTest.isFetching, false, "Error fetching status")
     }
-    
 }

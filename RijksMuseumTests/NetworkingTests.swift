@@ -10,27 +10,30 @@ import XCTest
 
 class RijksMuseumNetworkingTests: XCTestCase {
     
-    var requestService: RequestService!
-    var collectionNetworkServiceUnderTest: PreviewNetworkService!
-    var detailNetworkServiceUnderTest: DetailNetworkService!
+    private var requestService: RequestService!
+    private var previewNetworkServiceUnderTest: PreviewNetworkService!
+    private var detailNetworkServiceUnderTest: DetailNetworkService!
+    private var previewItemNetworkServiceUnderTest: PreviewItemNetworkService!
 
     override func setUpWithError() throws {
         try super.setUpWithError()
         requestService = RequestServiceImpl()
-        collectionNetworkServiceUnderTest = PreviewNetworkServiceImpl(requestService: requestService)
+        previewNetworkServiceUnderTest = PreviewNetworkServiceImpl(requestService: requestService)
         detailNetworkServiceUnderTest = DetailNetworkServiceImpl(requestService: requestService)
+        previewItemNetworkServiceUnderTest = PreviewItemNetworkServiceImpl(requestService: requestService)
     }
 
     override func tearDownWithError() throws {
         requestService = nil
-        collectionNetworkServiceUnderTest = nil
+        previewNetworkServiceUnderTest = nil
         detailNetworkServiceUnderTest = nil
+        previewItemNetworkServiceUnderTest = nil
         try super.setUpWithError()
     }
 
     func testCollectionDataFetching() throws {
         let promise = expectation(description: "Fetched collection data")
-        collectionNetworkServiceUnderTest.fetchCollectionData(page: 1) { response in
+        previewNetworkServiceUnderTest.fetchCollectionData(page: 1) { response in
             switch response {
             case .success(let items):
                 if items.artObjects.count == Int(PreviewDataSettings.itemsPerPage) {
@@ -48,7 +51,7 @@ class RijksMuseumNetworkingTests: XCTestCase {
     func testCollectionItemHeaderImageDataLoading() throws {
         let promise = expectation(description: "Fetched image data")
         let urlString = "https://lh3.googleusercontent.com/YjKvOkkf3epcceNunYHLeCrDFYNfADyeWnx_TkKyF1tzWPhotNzQaLztgeyfujmhgLG1LSBUv_oOtGL0bTWmgYxBEw=s0"
-        collectionNetworkServiceUnderTest.loadItemHeaderImage(with: urlString) { response in
+        previewItemNetworkServiceUnderTest.loadImageData(with: urlString) { response in
             switch response {
             case .success:
                 promise.fulfill()
@@ -76,7 +79,7 @@ class RijksMuseumNetworkingTests: XCTestCase {
     func testDetailItemImageDataLoading() throws {
         let promise = expectation(description: "Fetched image data")
         let urlString = "https://lh3.googleusercontent.com/vkoS9jmZLZWuWH1LNIG3eJUVI6W7XqOUKmFf_lcuB4m1nJydWPXZGggi3XGwmirNj1wLdiO7sH6x5fJ60XJnH2expg=s0"
-        collectionNetworkServiceUnderTest.loadItemHeaderImage(with: urlString) { response in
+        detailNetworkServiceUnderTest.loadItemHeaderImage(with: urlString) { response in
             switch response {
             case .success:
                 promise.fulfill()

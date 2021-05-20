@@ -8,7 +8,8 @@
 import UIKit
 
 class PreviewCollectionItemCell: UICollectionViewCell {
-    var item: ArtObjectPreview? {
+    
+    var viewModel: PreviewItemCellViewModel? {
         didSet {
             fillViews()
         }
@@ -16,10 +17,12 @@ class PreviewCollectionItemCell: UICollectionViewCell {
  
     fileprivate let backgroundImage: UIImageView = {
         let imageView = UIImageView()
+        imageView.image = DefaultImages.noPhoto.image
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 4
+        imageView.backgroundColor = .lightGray
         return imageView
     }()
     
@@ -50,19 +53,22 @@ class PreviewCollectionItemCell: UICollectionViewCell {
         ])
     }
     
-    public func configure(with item: ArtObjectPreview?) {
-        if self.item == item { return }
-        self.item = item
+    public func configure(with viewModel: PreviewItemCellViewModel) {
+        self.viewModel = viewModel
     }
 
     private func fillViews() {
-        if let item = item {
-            backgroundImage.image = UIImage(data: item.backgroundImage)
-            previewTitle.text = item.title
-        } else {
-            backgroundImage.image = UIImage()
+        guard let viewModel = viewModel else {
             previewTitle.text = ""
+            backgroundImage.image = DefaultImages.noPhoto.image
+            return
         }
+        previewTitle.text = viewModel.artObjectPreview.title
+        viewModel.fetchImageData(completion: { [weak self] (imageData, itemGuid) in
+            if viewModel.artObjectPreview.guid == itemGuid {
+                self?.backgroundImage.image = UIImage(data: imageData)
+            }
+        })
     }
     
     required init?(coder: NSCoder) {
@@ -70,6 +76,6 @@ class PreviewCollectionItemCell: UICollectionViewCell {
     }
     
     override func prepareForReuse() {
-        item = nil
+        viewModel = nil
     }
 }

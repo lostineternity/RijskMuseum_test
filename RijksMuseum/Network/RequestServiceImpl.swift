@@ -57,7 +57,6 @@ struct RequestServiceImpl: RequestService {
             }
             completionHandler(.success(data))
         }
-        
         dataTask.resume()
     }
 }

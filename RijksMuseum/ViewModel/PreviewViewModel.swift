@@ -67,25 +67,12 @@ final class PreviewViewModelImpl: PreviewViewModel {
     }
 
     private func fillDataFromModel(with collection: CollectionItems, completionHandler: @escaping ()->()) {
-        let loadingDispatchGroup = DispatchGroup()
         for item in collection.artObjects {
-            loadingDispatchGroup.enter()
-            networkService.loadItemHeaderImage(with: item.headerImage.fittedToScreenSizeURL) { [weak self] response in
-                guard let `self` = self else { return }
-                switch response {
-                    case .success(let imageData):
-                        self.artObjects.append(with: ArtObjectPreview(title: item.longTitle,
-                                                                          backgroundImage: imageData,
-                                                                          guid: item.objectNumber))
-                    case .failure(let error):
-                        print(error.errorDerscription)
-                }
-                loadingDispatchGroup.leave()
-            }
+            artObjects.append(with: ArtObjectPreview(title: item.longTitle,
+                                                     backgroundImageUrl: item.headerImage.fittedToScreenSizeURL,
+                                                     guid: item.objectNumber))
         }
-        loadingDispatchGroup.notify(queue: .main) {
-            completionHandler()
-        }
+        completionHandler()
     }
     
     func openDetailViewController(with itemId: String) {

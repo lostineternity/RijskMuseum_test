@@ -8,16 +8,13 @@
 import XCTest
 @testable import RijksMuseum
 
-class DetailViewModelTestError: XCTestCase, DetailViewModelDelegate{
+class DetailViewModelTestError: XCTestCase {
     private var modelUnderTest: DetailViewModelImpl!
-    private var promise: XCTestExpectation!
     
     override func setUpWithError() throws {
         try super.setUpWithError()
-        let testItemId = "SK-A-4100"
-        modelUnderTest = DetailViewModelImpl(with: testItemId,
+        modelUnderTest = DetailViewModelImpl(with: "testItemId",
                                              networkService: fakeDetailNetworkService())
-        modelUnderTest.delegate = self
     }
 
     override func tearDownWithError() throws {
@@ -26,11 +23,22 @@ class DetailViewModelTestError: XCTestCase, DetailViewModelDelegate{
     }
 
     func testErrorCase() throws {
-        promise = expectation(description: "Fetched and translated item data to model")
-        modelUnderTest.fetchData()
-        wait(for: [promise], timeout: 10)
+        configureTestEnviromentSuccessCase()
     }
 
+    private func configureTestEnviromentSuccessCase() {
+        let fakeViewModelDelegate = fakeViewModelDelegateImplErrorCase()
+        fakeViewModelDelegate.promise = expectation(description: "Fetched and translated item data to model")
+        modelUnderTest.delegate = fakeViewModelDelegate
+        modelUnderTest.fetchData()
+        wait(for: [fakeViewModelDelegate.promise], timeout: 10)
+    }
+}
+
+fileprivate class fakeViewModelDelegateImplErrorCase: DetailViewModelDelegate {
+    
+    var promise: XCTestExpectation!
+    
     func fetchingProcessing() {}
     
     func successFetching(with item: DetailItem) {
@@ -41,7 +49,6 @@ class DetailViewModelTestError: XCTestCase, DetailViewModelDelegate{
         XCTAssertNotEqual(errorDescription, "", NetworkError.decodingError.errorDerscription)
         promise.fulfill()
     }
-
 }
 
 fileprivate struct fakeDetailNetworkService: DetailNetworkService {

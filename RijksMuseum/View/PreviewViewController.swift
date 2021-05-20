@@ -134,7 +134,8 @@ extension PreviewCollectionViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PreviewCollectionItemCell.identifier, for: indexPath) as? PreviewCollectionItemCell else {
             return UICollectionViewCell()
         }
-        cell.configure(with: collectionItems[indexPath.item])
+        cell.configure(with: PreviewItemCellViewModelImpl(with: collectionItems[indexPath.item],
+                                                          networkService: PreviewItemNetworkServiceImpl(requestService: RequestServiceImpl())))
         return cell
     }
 }
