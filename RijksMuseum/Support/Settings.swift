@@ -24,7 +24,7 @@ public enum URLs {
 }
 
 public enum Keys {
-    static let apiKey = "YOUR_API_KEY"
+    static let apiKey = "0fiuZFh4"
 }
 
 public enum PreviewDataSettings {
