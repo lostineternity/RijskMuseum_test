@@ -9,6 +9,6 @@ import Foundation
 
 public struct ArtObjectPreview: Equatable {
     let title: String
-    let backgroundImageUrl: String
+    let backgroundImageUrl: String?
     let guid: String
 }

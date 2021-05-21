@@ -93,8 +93,8 @@ final class DetailViewModelImpl: DetailViewModel {
             itemInfo.append(acquisitionInfoSection)
         }
         
-        if let imageData = artObject.webImage {
-            networkService.loadItemHeaderImage(with: imageData.fittedToScreenSizeURL) { [weak self] response in
+        if let imageData = artObject.webImage, let fittedToScreenSizeURL = imageData.fittedToScreenSizeURL {
+            networkService.loadItemHeaderImage(with: fittedToScreenSizeURL) { [weak self] response in
                 switch response {
                 case .success(let data):
                     itemImage = data

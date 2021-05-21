@@ -24,7 +24,8 @@ final class PreviewItemCellViewModelImpl: PreviewItemCellViewModel {
     }
     
     func fetchImageData(completion: @escaping (Data, String) -> ()) {
-        networkService.loadImageData(with: artObjectPreview.backgroundImageUrl) { [weak self] response in
+        guard let backgroundImageUrl = artObjectPreview.backgroundImageUrl else { return }
+        networkService.loadImageData(with: backgroundImageUrl) { [weak self] response in
             guard let `self` = self else { return }
             switch response {
             case .success(let imageData):

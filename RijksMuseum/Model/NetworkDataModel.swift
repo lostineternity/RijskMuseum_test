@@ -47,9 +47,9 @@ public struct Acquisition: Codable {
 }
 
 public struct ImageRaw: Codable {
-    let url: String
-    var fittedToScreenSizeURL: String {
-        url.replacingOccurrences(of: "=s0", with: "=w\(ScreenProperties.screenWidth)")
+    let url: String?
+    var fittedToScreenSizeURL: String? {
+        url?.replacingOccurrences(of: "=s0", with: "=w\(ScreenProperties.screenWidth)")
     }
 }
 
